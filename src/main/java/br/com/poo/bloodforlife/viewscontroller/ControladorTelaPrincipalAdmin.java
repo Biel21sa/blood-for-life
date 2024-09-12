@@ -3,6 +3,7 @@ package br.com.poo.bloodforlife.viewscontroller;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.main.BloodForLive;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -17,6 +18,14 @@ public class ControladorTelaPrincipalAdmin {
     @FXML
     protected void initialize(){
         boasVindas.setText("Usuario Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
+    }
+
+    @FXML
+    private Button tela;
+
+    @FXML
+    protected void onClick() throws IOException{
+        ControladorDeCena.trocarCena(ControladorTelaCadastro.FXML_PATH);
     }
 
     //@FXML

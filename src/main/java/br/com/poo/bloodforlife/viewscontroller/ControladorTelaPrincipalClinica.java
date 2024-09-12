@@ -7,9 +7,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class ControladorTelaPrincipalCliente {
+public class ControladorTelaPrincipalClinica {
 
-    public static final String FXML_PATH = "tela-principal-cliente.fxml";
+    public static final String FXML_PATH = "tela-principal-admin.fxml";
 
     @FXML
     private Text boasVindas;

@@ -3,14 +3,17 @@ package br.com.poo.bloodforlife.usuarios;
 import br.com.poo.bloodforlife.apoio.Identificacao;
 import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoIdentificacao;
 
-public abstract class Usuario {
+import java.io.Serializable;
+
+public abstract class Usuario implements Serializable {
     protected String nome;
     protected String usuario;
     protected String tipo;
     protected String senha;
     protected int id;
 
-    public Usuario(String nome, String usuario, String tipo, String senha) {
+    public Usuario(String nome, String usuario, String senha, String tipo) {
+        this.tipo = tipo;
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;

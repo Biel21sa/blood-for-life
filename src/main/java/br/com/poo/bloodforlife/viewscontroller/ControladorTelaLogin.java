@@ -31,8 +31,11 @@ public class ControladorTelaLogin {
                 case "Administrador":
                     ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
                     break;
-                case "Cliente":
-                    ControladorDeCena.trocarCena(ControladorTelaPrincipalCliente.FXML_PATH);
+                case "Visualizador":
+                    ControladorDeCena.trocarCena(ControladorTelaPrincipalVisualizador.FXML_PATH);
+                    break;
+                case "Clinica":
+                    ControladorDeCena.trocarCena(ControladorTelaPrincipalClinica.FXML_PATH);
                     break;
             }
 
