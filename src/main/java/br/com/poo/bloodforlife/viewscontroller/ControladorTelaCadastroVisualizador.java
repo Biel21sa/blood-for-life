@@ -2,7 +2,6 @@ package br.com.poo.bloodforlife.viewscontroller;
 
 import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
-import br.com.poo.bloodforlife.usuarios.Clinica;
 import br.com.poo.bloodforlife.usuarios.Visualizador;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -31,6 +30,6 @@ public class ControladorTelaCadastroVisualizador {
 
     @FXML
     public void voltar() throws IOException{
-        ControladorDeCena.trocarCena(ControladorTelaCadastro.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaCadastroUsuario.FXML_PATH);
     }
 }

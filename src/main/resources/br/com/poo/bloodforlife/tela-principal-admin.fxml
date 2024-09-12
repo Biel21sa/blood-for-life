@@ -21,7 +21,8 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
-            <Button fx:id="tela" layoutX="77.0" layoutY="218.0" mnemonicParsing="false" onAction="#onClick" text="Cadastrar Usuários" />
+            <Button layoutX="77.0" layoutY="218.0" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Usuário" />
+            <Button layoutX="80.0" layoutY="307.0" mnemonicParsing="false" onAction="#cadastrarDoador" text="Cadastrar Doador" />
          </children>
       </Pane>
       <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">

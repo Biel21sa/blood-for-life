@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class ControladorTelaCadastro {
-    public static final String FXML_PATH = "tela-cadastro.fxml";
+public class ControladorTelaCadastroUsuario {
+    public static final String FXML_PATH = "tela-cadastro-usuario.fxml";
 
     @FXML
     public void cadastrarClinica() throws IOException {

@@ -32,6 +32,6 @@ public class ControladorTelaCadastroClinica {
 
     @FXML
     public void voltar() throws IOException{
-        ControladorDeCena.trocarCena(ControladorTelaCadastro.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaCadastroUsuario.FXML_PATH);
     }
 }

@@ -3,6 +3,7 @@ package br.com.poo.bloodforlife.controladores;
 import br.com.poo.bloodforlife.bancodesangue.BancoSangue;
 import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.doacao.RegistroDoacao;
+import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoDoador;
 import br.com.poo.bloodforlife.usuarios.Administrador;
 import br.com.poo.bloodforlife.usuarios.Clinica;
 import br.com.poo.bloodforlife.usuarios.Usuario;
@@ -19,7 +20,7 @@ public class Controlador {
     private ArrayList<Usuario> usuarios;
 
     private ControladorArquivoUsuarios controladorArquivoUsuario = new ControladorArquivoUsuarios();
-   // private ControladorArquivoClientes controladorArquivoClientes = new ControladorArquivoClientes();
+    private ControladorArquivoDoador controladorArquivoDoador = new ControladorArquivoDoador();
    // private ControladorArquivoContas controladorArquivoContas = new ControladorArquivoContas();
 
     public Controlador(String nome) {
@@ -80,9 +81,19 @@ public class Controlador {
         controladorArquivoUsuario.cadastrarUsuarioNoArquivo(clinica);
     }
 
+    public void cadastrarDoador(Doador doador){
+        this.getDoadores().add(doador);
+        controladorArquivoDoador.cadastrarDoadorNoArquivo(doador);
+    }
+
     public ArrayList<Usuario> getUsuarios(){
         this.usuarios = controladorArquivoUsuario.lerArquivoUsuarios();
         return this.usuarios;
+    }
+
+    public ArrayList<Doador> getDoadores(){
+        this.doadores = controladorArquivoDoador.lerArquivoDoadores();
+        return this.doadores;
     }
 
     public String getNome() {
