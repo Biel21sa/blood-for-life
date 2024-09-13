@@ -4,6 +4,7 @@ import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.usuarios.Visualizador;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -23,9 +24,30 @@ public class ControladorTelaCadastroVisualizador {
 
     @FXML
     public void cadastrarVisualizador() throws IOException {
-        Visualizador visualizador = new Visualizador(campoNome.toString(), campoUsuario.toString(), campoSenha.toString());
+        String nome = campoNome.getText();
+        String usuario = campoUsuario.getText();
+        String senha = campoSenha.getText();
+
+        if (nome == null || nome.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do nome está vazio!");
+            return;
+        }
+
+        if (usuario == null || usuario.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do usuário está vazio!");
+            return;
+        }
+
+        if (senha == null || senha.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo da senha está vazio!");
+            return;
+        }
+
+        Visualizador visualizador = new Visualizador(nome, usuario, senha);
         Controlador controlador = new Controlador("Hemocentro");
         controlador.cadastrarVisualizador(visualizador);
+
+        ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Cadastro do admin realizado com sucesso!");
     }
 
     @FXML

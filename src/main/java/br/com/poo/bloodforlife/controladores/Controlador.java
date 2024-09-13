@@ -3,6 +3,7 @@ package br.com.poo.bloodforlife.controladores;
 import br.com.poo.bloodforlife.bancodesangue.BancoSangue;
 import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.doacao.RegistroDoacao;
+import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoDoacao;
 import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoDoador;
 import br.com.poo.bloodforlife.usuarios.Administrador;
 import br.com.poo.bloodforlife.usuarios.Clinica;
@@ -14,18 +15,18 @@ import java.util.ArrayList;
 
 public class Controlador {
     private String nome;
-    private ArrayList<RegistroDoacao> registroDoacoes;
+    private ArrayList<RegistroDoacao> doacoes;
     private ArrayList<Doador> doadores;
     private ArrayList<BancoSangue> bancoSangue;
     private ArrayList<Usuario> usuarios;
 
     private ControladorArquivoUsuarios controladorArquivoUsuario = new ControladorArquivoUsuarios();
     private ControladorArquivoDoador controladorArquivoDoador = new ControladorArquivoDoador();
-   // private ControladorArquivoContas controladorArquivoContas = new ControladorArquivoContas();
+    private ControladorArquivoDoacao controladorArquivoDoacao = new ControladorArquivoDoacao();
 
     public Controlador(String nome) {
         this.nome = nome;
-        this.registroDoacoes = new ArrayList<>();
+        this.doacoes = new ArrayList<>();
         this.doadores = new ArrayList<>();
         this.bancoSangue = new ArrayList<>();
         this.usuarios = new ArrayList<>();
@@ -39,7 +40,6 @@ public class Controlador {
             if(usuarioSalvo != null && usuarioSalvo.getUsuario().equals(usuario) && usuarioSalvo.getSenha().equals(senha)) {
                     usuarioLogado = usuarioSalvo;
                 }
-            
         }
         return usuarioLogado;
     }
@@ -86,6 +86,22 @@ public class Controlador {
         controladorArquivoDoador.cadastrarDoadorNoArquivo(doador);
     }
 
+    public void registrarDoacoes(RegistroDoacao doacao){
+        this.getDoacoes().add(doacao);
+        controladorArquivoDoacao.cadastrarDoacaoNoArquivo(doacao);
+    }
+
+    public Doador buscarDoaodor(String cpf){
+        Doador doador = null;
+        this.doadores = this.getDoadores();
+        for (Doador doador1 : this.doadores){
+            if (doador1.getCpf().equals(cpf)){
+                doador = doador1;
+            }
+        }
+        return doador;
+    }
+
     public ArrayList<Usuario> getUsuarios(){
         this.usuarios = controladorArquivoUsuario.lerArquivoUsuarios();
         return this.usuarios;
@@ -94,6 +110,11 @@ public class Controlador {
     public ArrayList<Doador> getDoadores(){
         this.doadores = controladorArquivoDoador.lerArquivoDoadores();
         return this.doadores;
+    }
+
+    public ArrayList<RegistroDoacao> getDoacoes(){
+        this.doacoes = controladorArquivoDoacao.lerArquivoDoacoes();
+        return this.doacoes;
     }
 
     public String getNome() {

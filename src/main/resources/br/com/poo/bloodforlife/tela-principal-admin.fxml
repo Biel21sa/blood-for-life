@@ -22,7 +22,9 @@
               </yAxis>
             </BarChart>
             <Button layoutX="77.0" layoutY="218.0" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Usuário" />
-            <Button layoutX="80.0" layoutY="307.0" mnemonicParsing="false" onAction="#cadastrarDoador" text="Cadastrar Doador" />
+            <Button layoutX="77.0" layoutY="297.0" mnemonicParsing="false" onAction="#cadastrarDoador" text="Cadastrar Doador" />
+            <Button layoutX="75.0" layoutY="365.0" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar Doaação" />
+            <Button layoutX="80.0" layoutY="436.0" mnemonicParsing="false" onAction="#verificarDoador" text="Verificar Doador" />
          </children>
       </Pane>
       <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">

@@ -5,6 +5,7 @@ import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.doacao.TipoSangue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -35,22 +36,58 @@ public class ControladorTelaCadastroDoador {
         );
     }
 
+
     @FXML
-    public void cadastrarDoador() throws IOException{
+    public void cadastrarDoador() throws IOException {
         String nome = campoNome.getText();
         String cpf = campoCpf.getText();
         String email = campoEmail.getText();
-        int idade = Integer.parseInt(campoIdade.getText());
+        String idadeTexto = campoIdade.getText();
         String tipoSanguineo = campoTipo.getValue();
+        Integer idade = null;
+
+        if (nome == null || nome.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do nome está vazio!");
+            return;
+        }
+
+        if (cpf == null || cpf.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do CPF está vazio!");
+            return;
+        }
+
+        if (email == null || email.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do email está vazio!");
+            return;
+        }
+
+        if (idadeTexto == null || idadeTexto.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo da idade está vazio!");
+            return;
+        }
+
+        try {
+            idade = Integer.parseInt(idadeTexto);
+        } catch (NumberFormatException e) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Idade deve ser um número inteiro válido!");
+            return;
+        }
+
+        if (tipoSanguineo == null) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do tipo sanguíneo está vazio!");
+            return;
+        }
 
         TipoSangue tipoSangue = new TipoSangue(tipoSanguineo);
-        Doador doador = new Doador(nome,cpf,email,idade,tipoSangue);
+        Doador doador = new Doador(nome, cpf, email, idade, tipoSangue);
         Controlador controlador = new Controlador("Hemocentro");
         controlador.cadastrarDoador(doador);
+
+        ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Cadastro do doador realizado com sucesso!");
     }
 
     @FXML
     public void voltar() throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaCadastroUsuario.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
     }
 }
