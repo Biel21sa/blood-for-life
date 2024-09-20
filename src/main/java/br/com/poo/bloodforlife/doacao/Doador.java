@@ -1,6 +1,8 @@
 package br.com.poo.bloodforlife.doacao;
 
-public class Doador {
+import java.io.Serializable;
+
+public class Doador implements Serializable {
     private String nome;
     private String cpf;
     private String email;
@@ -23,6 +25,10 @@ public class Doador {
 
     public String getCpf() {
         return cpf;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getStatus() {

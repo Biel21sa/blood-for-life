@@ -2,6 +2,7 @@ package br.com.poo.bloodforlife.viewscontroller;
 
 import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
+import br.com.poo.bloodforlife.main.BloodForLive;
 import br.com.poo.bloodforlife.usuarios.Visualizador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -44,8 +45,7 @@ public class ControladorTelaCadastroVisualizador {
         }
 
         Visualizador visualizador = new Visualizador(nome, usuario, senha);
-        Controlador controlador = new Controlador("Hemocentro");
-        controlador.cadastrarVisualizador(visualizador);
+        BloodForLive.getBank().cadastrarVisualizador(visualizador);
 
         ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Cadastro do admin realizado com sucesso!");
     }

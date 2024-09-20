@@ -2,6 +2,7 @@ package br.com.poo.bloodforlife.viewscontroller;
 
 import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
+import br.com.poo.bloodforlife.main.BloodForLive;
 import br.com.poo.bloodforlife.usuarios.Clinica;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -52,8 +53,7 @@ public class ControladorTelaCadastroClinica {
         }
 
         Clinica clinica = new Clinica(nome, usuario, senha, cnpj);
-        Controlador controlador = new Controlador("Hemocentro");
-        controlador.cadastrarClinica(clinica);
+        BloodForLive.getBank().cadastrarClinica(clinica);
 
         ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Cadastro da clínica realizado com sucesso!");
     }

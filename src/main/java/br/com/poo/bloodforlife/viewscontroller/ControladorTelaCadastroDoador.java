@@ -4,6 +4,7 @@ import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.doacao.TipoSangue;
+import br.com.poo.bloodforlife.main.BloodForLive;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -80,10 +81,11 @@ public class ControladorTelaCadastroDoador {
 
         TipoSangue tipoSangue = new TipoSangue(tipoSanguineo);
         Doador doador = new Doador(nome, cpf, email, idade, tipoSangue);
-        Controlador controlador = new Controlador("Hemocentro");
-        controlador.cadastrarDoador(doador);
+        BloodForLive.getBank().cadastrarDoador(doador);
 
         ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Cadastro do doador realizado com sucesso!");
+
+        ControladorDeCena.trocarCena(ControladorTelaListaDoador.FXML_PATH);
     }
 
     @FXML

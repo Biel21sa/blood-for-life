@@ -1,6 +1,8 @@
 package br.com.poo.bloodforlife.doacao;
 
-public class TipoSangue {
+import java.io.Serializable;
+
+public class TipoSangue implements Serializable {
     private String tipo;
 
     public TipoSangue(String tipo) {

@@ -3,6 +3,7 @@ package br.com.poo.bloodforlife.viewscontroller;
 import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.doacao.Doador;
+import br.com.poo.bloodforlife.main.BloodForLive;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -35,8 +36,7 @@ public class ControladorTelaVerificarDoador {
             return;
         }
 
-        Controlador controlador = new Controlador("Hemocentro");
-        Doador doador = controlador.buscarDoaodor(cpf);
+        Doador doador = BloodForLive.getBank().buscarDoaodor(cpf);
         nomeDoador.setText(doador.getNome());
         cpfDoador.setText(doador.getCpf());
         statusDoaodor.setText(doador.getStatus());

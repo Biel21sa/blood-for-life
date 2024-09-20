@@ -35,6 +35,11 @@ public class ControladorTelaPrincipalAdmin {
     }
 
     @FXML
+    protected void listarDoador() throws IOException{
+        ControladorDeCena.trocarCena(ControladorTelaListaDoador.FXML_PATH);
+    }
+
+    @FXML
     protected void verificarDoador() throws IOException{
         ControladorDeCena.trocarCena(ControladorTelaVerificarDoador.FXML_PATH);
     }
