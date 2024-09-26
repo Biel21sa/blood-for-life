@@ -15,4 +15,20 @@ public class RegistroDoacao implements Serializable {
         this.quantidade = quantidade;
         this.doador = doador;
     }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public String getTipoSangue() {
+        return tipoSangue;
+    }
+
+    public double getQuantidade() {
+        return quantidade;
+    }
+
+    public Doador getDoador() {
+        return doador;
+    }
 }

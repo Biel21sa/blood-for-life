@@ -8,10 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControladorTelaListaDoador {
     public static final String FXML_PATH = "tela-lista-doador.fxml";
@@ -31,6 +34,10 @@ public class ControladorTelaListaDoador {
     @FXML
     TableColumn<Doador, String> statusDoador;
 
+    @FXML
+    private TextField campoPesquisaCpf;
+
+
     ArrayList<Doador> doadores = BloodForLive.getBank().getDoadores();
     ObservableList<Doador> doadorObservableList;
 
@@ -43,6 +50,7 @@ public class ControladorTelaListaDoador {
 
         doadorObservableList = FXCollections.observableArrayList(doadores);
         tabelaDoador.setItems(doadorObservableList);
+        atualizarTabela(doadores);
     }
 
     @FXML
@@ -51,7 +59,31 @@ public class ControladorTelaListaDoador {
     }
 
     @FXML
+    public void pesquisarDoador() {
+        String cpfPesquisa = campoPesquisaCpf.getText().trim();
+
+        // Filtra a lista de doadores pelo CPF
+        List<Doador> resultadoPesquisa = doadores.stream()
+                .filter(doador -> doador.getCpf().contains(cpfPesquisa))
+                .collect(Collectors.toList());
+
+        doadorObservableList = FXCollections.observableArrayList(resultadoPesquisa);
+        tabelaDoador.setItems(doadorObservableList);
+        atualizarTabela(resultadoPesquisa);
+    }
+
+    private void atualizarTabela(List<Doador> listaDoador) {
+        // Limita a lista a no máximo 15 doadores
+        List<Doador> listaLimitada = listaDoador.size() > 15 ? listaDoador.subList(0, 15) : listaDoador;
+
+        doadorObservableList = FXCollections.observableArrayList(listaLimitada);
+        tabelaDoador.setItems(doadorObservableList);
+    }
+
+    @FXML
     public void voltar()  throws IOException {
         ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
     }
+
+
 }

@@ -25,11 +25,6 @@ public class ControladorTelaPrincipalAdmin {
     }
 
     @FXML
-    protected void cadastrarDoador() throws IOException{
-        ControladorDeCena.trocarCena(ControladorTelaCadastroDoador.FXML_PATH);
-    }
-
-    @FXML
     protected void registrarDoacao() throws IOException{
         ControladorDeCena.trocarCena(ControladorTelaRegistroDoacao.FXML_PATH);
     }
@@ -40,14 +35,19 @@ public class ControladorTelaPrincipalAdmin {
     }
 
     @FXML
+    protected void listarUsuario() throws IOException{
+        ControladorDeCena.trocarCena(ControladorTelaListaUsuario.FXML_PATH);
+    }
+
+    @FXML
+    protected void listarDoacao() throws IOException{
+        ControladorDeCena.trocarCena(ControladorTelaListaDoacao.FXML_PATH);
+    }
+
+    @FXML
     protected void verificarDoador() throws IOException{
         ControladorDeCena.trocarCena(ControladorTelaVerificarDoador.FXML_PATH);
     }
-
-    //@FXML
-   // protected void gerirUsuarios() throws IOException {
-    //    ControladorDeCena.trocarCena(ControladorTelaListaUsuarios.FXML_PATH);
-   // }
 
     @FXML
     protected void sair() throws IOException {

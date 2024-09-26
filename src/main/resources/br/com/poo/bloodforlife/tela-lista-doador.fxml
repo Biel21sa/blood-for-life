@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -17,6 +18,11 @@
                   <Font name="System Bold" size="48.0" />
                </font>
             </Text>
+
+            <!-- Campo de pesquisa pelo CPF -->
+            <TextField fx:id="campoPesquisaCpf" layoutX="362.0" layoutY="180.0" promptText="Pesquisar por CPF" />
+            <Button layoutX="562.0" layoutY="180.0" mnemonicParsing="false" onAction="#pesquisarDoador" text="Pesquisar" />
+
             <TableView fx:id="tabelaDoador" layoutX="362.0" layoutY="228.0" prefHeight="338.0" prefWidth="582.0">
                <columns>
                   <TableColumn fx:id="nomeDoador" prefWidth="168.79998779296875" text="Nome" />

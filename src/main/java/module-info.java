@@ -16,4 +16,6 @@ module br.com.poo.bloodforlife {
     opens br.com.poo.bloodforlife.usuarios to javafx.fxml;
     exports br.com.poo.bloodforlife.controladores;
     opens br.com.poo.bloodforlife.controladores to javafx.fxml;
+    exports br.com.poo.bloodforlife.doacao;
+    opens br.com.poo.bloodforlife.doacao to javafx.base;
 }
