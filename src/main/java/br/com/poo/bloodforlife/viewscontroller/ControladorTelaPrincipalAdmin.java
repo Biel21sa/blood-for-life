@@ -43,7 +43,7 @@ public class ControladorTelaPrincipalAdmin {
         bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
             series.getData().add(new XYChart.Data<>(tipo, quantidade));
         });
-        
+
         barChartSangue.getData().add(series);
     }
 
