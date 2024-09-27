@@ -7,9 +7,9 @@ public class RegistroDoacao implements Serializable {
     private LocalDate data;
     private String tipoSangue;
     private double quantidade;
-    private Doador doador;
+    private String doador;
 
-    public RegistroDoacao(LocalDate data, String tipoSangue, double quantidade, Doador doador) {
+    public RegistroDoacao(LocalDate data, String tipoSangue, double quantidade, String doador) {
         this.data = data;
         this.tipoSangue = tipoSangue;
         this.quantidade = quantidade;
@@ -28,7 +28,7 @@ public class RegistroDoacao implements Serializable {
         return quantidade;
     }
 
-    public Doador getDoador() {
+    public String getDoador() {
         return doador;
     }
 }

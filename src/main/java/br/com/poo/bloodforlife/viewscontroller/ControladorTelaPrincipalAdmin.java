@@ -2,7 +2,10 @@ package br.com.poo.bloodforlife.viewscontroller;
 
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.main.BloodForLive;
+import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoBancoSangue;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -15,37 +18,52 @@ public class ControladorTelaPrincipalAdmin {
     private Text boasVindas;
 
     @FXML
+    private BarChart<String, Number> barChartSangue;
+
+    private ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
+
+    @FXML
     protected void initialize(){
-        boasVindas.setText("Usuario Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
+        // Exibe o nome do usuário logado
+        boasVindas.setText("Usuário Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
+
+        // Preenche o gráfico de barras com os dados do estoque de sangue
+        preencherGrafico();
+    }
+
+    private void preencherGrafico() {
+        // Cria uma série para os dados do estoque de sangue
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Estoque de Sangue");
+
+        // Obtém o estoque do arquivo serial
+        var bancoSangue = controladorArquivoBancoSangue.lerEstoqueBancoSangue();
+
+        // Adiciona cada tipo sanguíneo e sua quantidade ao gráfico
+        bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
+            series.getData().add(new XYChart.Data<>(tipo, quantidade));
+        });
+        
+        barChartSangue.getData().add(series);
     }
 
     @FXML
-    protected void cadastrarUsuario() throws IOException{
-        ControladorDeCena.trocarCena(ControladorTelaCadastroUsuario.FXML_PATH);
-    }
-
-    @FXML
-    protected void registrarDoacao() throws IOException{
-        ControladorDeCena.trocarCena(ControladorTelaRegistroDoacao.FXML_PATH);
-    }
-
-    @FXML
-    protected void listarDoador() throws IOException{
+    protected void listarDoador() throws IOException {
         ControladorDeCena.trocarCena(ControladorTelaListaDoador.FXML_PATH);
     }
 
     @FXML
-    protected void listarUsuario() throws IOException{
+    protected void listarUsuario() throws IOException {
         ControladorDeCena.trocarCena(ControladorTelaListaUsuario.FXML_PATH);
     }
 
     @FXML
-    protected void listarDoacao() throws IOException{
+    protected void listarDoacao() throws IOException {
         ControladorDeCena.trocarCena(ControladorTelaListaDoacao.FXML_PATH);
     }
 
     @FXML
-    protected void verificarDoador() throws IOException{
+    protected void verificarDoador() throws IOException {
         ControladorDeCena.trocarCena(ControladorTelaVerificarDoador.FXML_PATH);
     }
 
@@ -55,4 +73,3 @@ public class ControladorTelaPrincipalAdmin {
         ControladorDeCena.trocarCena(ControladorTelaLogin.FXML_PATH);
     }
 }
-

@@ -5,6 +5,7 @@ import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.doacao.RegistroDoacao;
 import br.com.poo.bloodforlife.main.BloodForLive;
+import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoBancoSangue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -73,15 +74,18 @@ public class ControladorTelaRegistroDoacao {
         }
 
         Doador doador = BloodForLive.getBank().buscarDoaodor(cpf);
-        RegistroDoacao registroDoacao = new RegistroDoacao(data, tipoSanguineo, quantidade, doador);
+        ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
+        String nomeDoador = doador.getNome();
+        RegistroDoacao registroDoacao = new RegistroDoacao(data, tipoSanguineo, quantidade, nomeDoador);
         doador.setStatus("ativo");
+        controladorArquivoBancoSangue.adicionarQuantidade(tipoSanguineo, quantidade);
         BloodForLive.getBank().registrarDoacoes(registroDoacao);
         BloodForLive.getBank().cadastrarDoador(doador);
 
         ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Registro de doação realizado com sucesso!");
+
+        ControladorDeCena.trocarCena(ControladorTelaListaDoacao.FXML_PATH);
     }
-
-
 
     @FXML
     public void voltar() throws IOException {

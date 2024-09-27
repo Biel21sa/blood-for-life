@@ -10,34 +10,32 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalAdmin">
-   <children>
-      <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
-         <children>
-            <BarChart layoutX="335.0" layoutY="128.0" prefHeight="451.0" prefWidth="904.0" style="-fx-background-color: #ffffff;">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-            <Button layoutX="77.0" layoutY="218.0" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Usuário" />
-            <Button layoutX="75.0" layoutY="354.0" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar Doação" />
-            <Button layoutX="77.0" layoutY="308.0" mnemonicParsing="false" onAction="#verificarDoador" text="Verificar Doador" />
-            <Button layoutX="73.0" layoutY="264.0" mnemonicParsing="false" onAction="#listarDoador" text="Lista de Doadores" />
-            <Button layoutX="78.0" layoutY="401.0" mnemonicParsing="false" onAction="#listarUsuario" text="Lista de Usuários" />
-            <Button layoutX="79.0" layoutY="443.0" mnemonicParsing="false" onAction="#listarDoacao" text="Lista de Doações" />
-         </children>
-      </Pane>
-      <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Button layoutX="24.0" layoutY="566.0" mnemonicParsing="false" onAction="#sair" prefHeight="17.0" prefWidth="248.0" style="-fx-background-color: #34495e;" text="Sair" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </children>
+    <children>
+        <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
+            <children>
+                <BarChart fx:id="barChartSangue" layoutX="335.0" layoutY="128.0" prefHeight="451.0" prefWidth="904.0" style="-fx-background-color: #ffffff;">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </BarChart>
+                <Button layoutX="77.0" layoutY="308.0" mnemonicParsing="false" onAction="#verificarDoador" text="Verificar Doador" />
+                <Button layoutX="73.0" layoutY="264.0" mnemonicParsing="false" onAction="#listarDoador" text="Lista de Doadores" />
+                <Button layoutX="75.0" layoutY="354.0" mnemonicParsing="false" onAction="#listarUsuario" text="Lista de Usuários" />
+                <Button layoutX="75.0" layoutY="394.0" mnemonicParsing="false" onAction="#listarDoacao" text="Lista de Doações" />
+            </children>
+        </Pane>
+        <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Button layoutX="24.0" layoutY="566.0" mnemonicParsing="false" onAction="#sair" prefHeight="17.0" prefWidth="248.0" style="-fx-background-color: #34495e;" text="Sair" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+    </children>
 </AnchorPane>
