@@ -17,7 +17,6 @@ public class Controlador {
     private String nome;
     private ArrayList<RegistroDoacao> doacoes;
     private ArrayList<Doador> doadores;
-    private ArrayList<BancoSangue> bancoSangue;
     private ArrayList<Usuario> usuarios;
 
     private ControladorArquivoUsuarios controladorArquivoUsuario = new ControladorArquivoUsuarios();
@@ -28,7 +27,6 @@ public class Controlador {
         this.nome = nome;
         this.doacoes = new ArrayList<>();
         this.doadores = new ArrayList<>();
-        this.bancoSangue = new ArrayList<>();
         this.usuarios = new ArrayList<>();
         this.criarUsuarioAdminPadrao();
     }
@@ -84,6 +82,23 @@ public class Controlador {
     public void cadastrarDoador(Doador doador){
         this.getDoadores().add(doador);
         controladorArquivoDoador.cadastrarDoadorNoArquivo(doador);
+    }
+
+    public void excluirDoador(String cpf){
+        this.doadores = this.getDoadores();
+        this.doadores.removeIf(d -> d.getCpf().equals(cpf));
+        controladorArquivoDoador.excluirDoadorNoArquivo(cpf);
+    }
+
+    public void atualizarDoador(String cpf, String novoStatus){
+        this.doadores = this.getDoadores();
+        for (Doador d : doadores) {
+            if (d.getCpf().equals(cpf)) {
+                d.setStatus(novoStatus);
+                break;
+            }
+        }
+        controladorArquivoDoador.atualizarStatusDoador(cpf, novoStatus);
     }
 
     public void registrarDoacoes(RegistroDoacao doacao){

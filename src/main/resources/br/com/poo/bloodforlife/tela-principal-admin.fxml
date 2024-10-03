@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalAdmin">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalAdmin">
     <children>
         <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
             <children>
@@ -21,10 +21,9 @@
                         <NumberAxis side="LEFT" />
                     </yAxis>
                 </BarChart>
-                <Button layoutX="77.0" layoutY="308.0" mnemonicParsing="false" onAction="#verificarDoador" text="Verificar Doador" />
                 <Button layoutX="73.0" layoutY="264.0" mnemonicParsing="false" onAction="#listarDoador" text="Lista de Doadores" />
-                <Button layoutX="75.0" layoutY="354.0" mnemonicParsing="false" onAction="#listarUsuario" text="Lista de Usuários" />
-                <Button layoutX="75.0" layoutY="394.0" mnemonicParsing="false" onAction="#listarDoacao" text="Lista de Doações" />
+                <Button layoutX="75.0" layoutY="311.0" mnemonicParsing="false" onAction="#listarUsuario" text="Lista de Usuários" />
+                <Button layoutX="75.0" layoutY="354.0" mnemonicParsing="false" onAction="#listarDoacao" text="Lista de Doações" />
             </children>
         </Pane>
         <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">

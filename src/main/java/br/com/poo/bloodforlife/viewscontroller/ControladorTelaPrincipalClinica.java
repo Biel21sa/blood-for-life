@@ -1,14 +1,25 @@
 package br.com.poo.bloodforlife.viewscontroller;
 
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
+import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.main.BloodForLive;
 import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoBancoSangue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControladorTelaPrincipalClinica {
 
@@ -18,38 +29,36 @@ public class ControladorTelaPrincipalClinica {
     private Text boasVindas;
 
     @FXML
-    private BarChart<String, Number> barChartSangue;
+    private TextField campoCpf;
 
-    private ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
+    @FXML
+    private Text nomeDoador;
+
+    @FXML
+    private Text cpfDoador;
+
+    @FXML
+    private Text statusDoador;
 
     @FXML
     protected void initialize(){
         // Exibe o nome do usuário logado
         boasVindas.setText("Usuário Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
-
-        // Preenche o gráfico de barras com os dados do estoque de sangue
-        preencherGrafico();
-    }
-
-    private void preencherGrafico() {
-        // Cria uma série para os dados do estoque de sangue
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Estoque de Sangue");
-
-        // Obtém o estoque do arquivo serial
-        var bancoSangue = controladorArquivoBancoSangue.lerEstoqueBancoSangue();
-
-        // Adiciona cada tipo sanguíneo e sua quantidade ao gráfico
-        bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
-            series.getData().add(new XYChart.Data<>(tipo, quantidade));
-        });
-
-        barChartSangue.getData().add(series);
     }
 
     @FXML
-    protected void verificarDoador() throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaVerificarDoador.FXML_PATH);
+    public void verificar() throws IOException {
+        String cpf = campoCpf.getText();
+
+        if (cpf == null || cpf.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do CPF está vazio!");
+            return;
+        }
+
+        Doador doador = BloodForLive.getBank().buscarDoaodor(cpf);
+        nomeDoador.setText(doador.getNome());
+        cpfDoador.setText(doador.getCpf());
+        statusDoador.setText(doador.getStatus());
     }
 
     @FXML

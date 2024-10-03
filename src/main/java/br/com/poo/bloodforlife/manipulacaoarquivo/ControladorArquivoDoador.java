@@ -16,6 +16,29 @@ public class ControladorArquivoDoador {
         this.salvarArquivoDoadores(doadores);
     }
 
+    public void excluirDoadorNoArquivo(String cpf) {
+        ArrayList<Doador> doadores = this.lerArquivoDoadores();
+
+        doadores.removeIf(d -> d.getCpf().equals(cpf));
+
+        this.salvarArquivoDoadores(doadores);
+    }
+
+
+    public void atualizarStatusDoador(String cpf, String novoStatus) {
+        ArrayList<Doador> doadores = this.lerArquivoDoadores();
+
+        for (Doador d : doadores) {
+            if (d.getCpf().equals(cpf)) {
+                d.setStatus(novoStatus);
+                break;
+            }
+        }
+
+        this.salvarArquivoDoadores(doadores);
+    }
+
+
     public ArrayList<Doador> lerArquivoDoadores() {
         ArrayList<Doador> doadores = new ArrayList<>();
         File arquivo = new File(ARQUIVO_DOADORES);

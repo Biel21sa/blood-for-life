@@ -6,6 +6,7 @@ import br.com.poo.bloodforlife.main.BloodForLive;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +37,9 @@ public class ControladorTelaListaDoador {
 
     @FXML
     private TextField campoPesquisaCpf;
+
+    @FXML
+    private TextField campoDeletarDoador;
 
 
     ArrayList<Doador> doadores = BloodForLive.getBank().getDoadores();
@@ -70,6 +74,20 @@ public class ControladorTelaListaDoador {
         doadorObservableList = FXCollections.observableArrayList(resultadoPesquisa);
         tabelaDoador.setItems(doadorObservableList);
         atualizarTabela(resultadoPesquisa);
+    }
+
+    @FXML
+    public void excluirDoador() {
+        String cpfPesquisa = campoDeletarDoador.getText().trim();
+
+        BloodForLive.getBank().excluirDoador(cpfPesquisa);
+
+        ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Excluído o doador com sucesso!");
+
+        ArrayList<Doador> doadores = BloodForLive.getBank().getDoadores();
+        doadorObservableList = FXCollections.observableArrayList(doadores);
+        tabelaDoador.setItems(doadorObservableList);
+        atualizarTabela(doadores);
     }
 
     private void atualizarTabela(List<Doador> listaDoador) {

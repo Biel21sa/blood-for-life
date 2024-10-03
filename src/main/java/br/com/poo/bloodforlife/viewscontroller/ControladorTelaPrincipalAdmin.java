@@ -63,11 +63,6 @@ public class ControladorTelaPrincipalAdmin {
     }
 
     @FXML
-    protected void verificarDoador() throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaVerificarDoador.FXML_PATH);
-    }
-
-    @FXML
     protected void sair() throws IOException {
         BloodForLive.setUsuarioLogado(null);
         ControladorDeCena.trocarCena(ControladorTelaLogin.FXML_PATH);

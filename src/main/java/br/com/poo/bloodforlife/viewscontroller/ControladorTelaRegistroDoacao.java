@@ -77,10 +77,9 @@ public class ControladorTelaRegistroDoacao {
         ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
         String nomeDoador = doador.getNome();
         RegistroDoacao registroDoacao = new RegistroDoacao(data, tipoSanguineo, quantidade, nomeDoador);
-        doador.setStatus("ativo");
         controladorArquivoBancoSangue.adicionarQuantidade(tipoSanguineo, quantidade);
         BloodForLive.getBank().registrarDoacoes(registroDoacao);
-        BloodForLive.getBank().cadastrarDoador(doador);
+        BloodForLive.getBank().atualizarDoador(cpf, "ativo");
 
         ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Registro de doação realizado com sucesso!");
 

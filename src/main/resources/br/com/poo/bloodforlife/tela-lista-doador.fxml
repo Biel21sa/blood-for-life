@@ -31,6 +31,13 @@
                   <TableColumn fx:id="statusDoador" prefWidth="127.0" text="Status" />
                </columns>
             </TableView>
+            <Text layoutX="1073.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Excluir Doador">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField fx:id="campoDeletarDoador" layoutX="1073.0" layoutY="228.0" promptText="Digite o CPF..." />
+            <Button layoutX="1124.0" layoutY="281.0" mnemonicParsing="false" onAction="#excluirDoador" text="Excluir" />
          </children>
       </Pane>
       <Button layoutX="75.0" layoutY="86.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
