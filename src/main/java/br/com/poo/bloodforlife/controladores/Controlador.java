@@ -90,6 +90,12 @@ public class Controlador {
         controladorArquivoDoador.excluirDoadorNoArquivo(cpf);
     }
 
+    public void excluirUsuario(int id){
+        this.usuarios = this.getUsuarios();
+        this.usuarios.removeIf(d -> d.getId() == id);
+        controladorArquivoUsuario.excluirUsuarioNoArquivo(id);
+    }
+
     public void atualizarDoador(String cpf, String novoStatus){
         this.doadores = this.getDoadores();
         for (Doador d : doadores) {

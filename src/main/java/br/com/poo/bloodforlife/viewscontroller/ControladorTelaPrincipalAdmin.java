@@ -4,6 +4,7 @@ import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.main.BloodForLive;
 import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoBancoSangue;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.text.Text;
@@ -39,13 +40,44 @@ public class ControladorTelaPrincipalAdmin {
         // Obtém o estoque do arquivo serial
         var bancoSangue = controladorArquivoBancoSangue.lerEstoqueBancoSangue();
 
+        // Defina as cores harmoniosas para cada tipo sanguíneo
+        String[] cores = {
+                "#FF6F00",
+                "#FFA726",
+                "#FFD54F",
+                "#FFF176",
+                "#DCE775",
+                "#AEDD55",
+                "#FF7043",
+                "#F57C00"
+        };
+
+        // Mapeamento de tipos sanguíneos
+        String[] tiposSanguineos = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+
         // Adiciona cada tipo sanguíneo e sua quantidade ao gráfico
         bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
-            series.getData().add(new XYChart.Data<>(tipo, quantidade));
+            XYChart.Data<String, Number> data = new XYChart.Data<>(tipo, quantidade);
+            series.getData().add(data);
         });
 
         barChartSangue.getData().add(series);
+
+        // Aplicar as cores às barras
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            String tipo = data.getXValue();
+            for (int i = 0; i < tiposSanguineos.length; i++) {
+                if (tiposSanguineos[i].equals(tipo)) {
+                    // Obtém o nó da barra e define sua cor
+                    Node node = data.getNode();
+                    if (node != null) {
+                        node.setStyle("-fx-bar-fill: " + cores[i] + ";");
+                    }
+                }
+            }
+        }
     }
+
 
     @FXML
     protected void listarDoador() throws IOException {

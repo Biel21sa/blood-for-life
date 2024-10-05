@@ -1,5 +1,6 @@
 package br.com.poo.bloodforlife.manipulacaoarquivo;
 
+import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.usuarios.Usuario;
 
 import java.io.*;
@@ -12,6 +13,14 @@ public class ControladorArquivoUsuarios {
     public void cadastrarUsuarioNoArquivo(Usuario usuario){
         ArrayList<Usuario> usuarios = this.lerArquivoUsuarios();
         usuarios.add(usuario);
+        this.salvarArquivoUsuarios(usuarios);
+    }
+
+    public void excluirUsuarioNoArquivo(int id) {
+        ArrayList<Usuario> usuarios = this.lerArquivoUsuarios();
+
+        usuarios.removeIf(d -> d.getId() == id);
+
         this.salvarArquivoUsuarios(usuarios);
     }
 
