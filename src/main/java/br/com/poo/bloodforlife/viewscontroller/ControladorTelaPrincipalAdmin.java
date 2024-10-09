@@ -42,18 +42,22 @@ public class ControladorTelaPrincipalAdmin {
 
         // Defina as cores harmoniosas para cada tipo sanguíneo
         String[] cores = {
-                "#FF6F00",
-                "#FFA726",
-                "#FFD54F",
-                "#FFF176",
-                "#DCE775",
-                "#AEDD55",
-                "#FF7043",
-                "#F57C00"
+                "#A3F188",
+                "#C3F188",
+                "#CFF188",
+                "#E2F188",
+                "#B0F188",
+                "#FFF48D",
+                "#FFF06C",
+                "#D7EA67"
         };
 
         // Mapeamento de tipos sanguíneos
         String[] tiposSanguineos = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+
+        // Define o estoque mínimo e o valor de aviso
+        final int ESTOQUE_MINIMO = 75;
+        final int AVISO_ESTOQUE = 100; // valor para indicar que o estoque está se aproximando do mínimo
 
         // Adiciona cada tipo sanguíneo e sua quantidade ao gráfico
         bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
@@ -63,15 +67,26 @@ public class ControladorTelaPrincipalAdmin {
 
         barChartSangue.getData().add(series);
 
-        // Aplicar as cores às barras
+        // Aplicar as cores e estilos às barras
         for (XYChart.Data<String, Number> data : series.getData()) {
             String tipo = data.getXValue();
+            Number quantidade = data.getYValue();
+
             for (int i = 0; i < tiposSanguineos.length; i++) {
                 if (tiposSanguineos[i].equals(tipo)) {
-                    // Obtém o nó da barra e define sua cor
+                    // Obtém o nó da barra e define sua cor e estilo
                     Node node = data.getNode();
                     if (node != null) {
-                        node.setStyle("-fx-bar-fill: " + cores[i] + ";");
+                        if (quantidade.intValue() < ESTOQUE_MINIMO) {
+                            // Estoque abaixo do mínimo (vermelho)
+                            node.setStyle("-fx-bar-fill: #F18888;");
+                        } else if (quantidade.intValue() < AVISO_ESTOQUE) {
+                            // Estoque próximo do mínimo (amarelo)
+                            node.setStyle("-fx-bar-fill: #FFC48D;");
+                        } else {
+                            // Estoque acima do valor de aviso, usar a cor padrão
+                            node.setStyle("-fx-bar-fill: " + cores[i] + ";");
+                        }
                     }
                 }
             }

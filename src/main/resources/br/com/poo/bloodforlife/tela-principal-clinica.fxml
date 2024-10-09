@@ -11,7 +11,16 @@
    <children>
       <AnchorPane layoutX="-2.0" layoutY="7.0" prefHeight="650.0" prefWidth="1300.0">
          <children>
-            <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;" />
+            <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
+               <children>
+                  <Text layoutX="901.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilizar Desconto">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="descontoCpf" layoutX="911.0" layoutY="243.0" promptText="cpf" />
+                  <Button layoutX="1095.0" layoutY="243.0" mnemonicParsing="false" onAction="#utilizar" text="Utilizar" />
+               </children></Pane>
             <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">
                <font>
                   <Font size="16.0" />
