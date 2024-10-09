@@ -3,35 +3,26 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaListaDoacao">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaListaDoacao">
    <children>
-      <AnchorPane layoutX="-4.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <Pane layoutX="-3.0" layoutY="-16.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
-               <children>
-                  <Text layoutX="406.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doações Cadastradas">
-                     <font>
-                        <Font name="System Bold" size="48.0" />
-                     </font>
-                  </Text>
-                  <TableView fx:id="tabelaDoacao" layoutX="362.0" layoutY="228.0" prefHeight="338.0" prefWidth="582.0">
-                     <columns>
-                        <TableColumn fx:id="dataDoacao" prefWidth="168.79998779296875" text="Data" />
-                        <TableColumn fx:id="doadorDoacao" prefWidth="131.20001220703125" text="Doador" />
-                        <TableColumn fx:id="tipoSangueDoacao" prefWidth="153.0" text="Tipo de Sangue" />
-                        <TableColumn fx:id="quantidadeDoacao" prefWidth="127.0" text="Quantidade" />
-                     </columns>
-                  </TableView>
-               </children>
-            </Pane>
-            <Button layoutX="75.0" layoutY="86.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-            <Button layoutX="87.0" layoutY="307.0" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar Doação" />
-         </children>
-      </AnchorPane>
+      <TableView fx:id="tabelaDoacao" layoutX="240.0" layoutY="67.0" prefHeight="537.0" prefWidth="782.0">
+         <columns>
+            <TableColumn id="border-left" fx:id="dataDoacao" prefWidth="194.0" text="Data" />
+            <TableColumn fx:id="doadorDoacao" prefWidth="194.0" text="Doador" />
+            <TableColumn fx:id="tipoSangueDoacao" prefWidth="195.0" text="Tipo de Sangue" />
+            <TableColumn id="border-right" fx:id="quantidadeDoacao" prefWidth="194.1" text="Quantidade" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="681.0" fitWidth="331.0" layoutX="-29.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../SideScroll.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="70.0" layoutY="62.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Button layoutX="1097.0" layoutY="335.0" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar Doação" />
    </children>
 </AnchorPane>

@@ -1,0 +1,166 @@
+
+#background_main {
+    -fx-background-image : url("../../../../Background.png");
+    -fx-background-size : cover;
+}
+
+.ImageView {
+    -fx-resizable : false;
+}
+
+.Input {
+    -fx-background-radius : 12;
+    -fx-text-box-border : transparent;
+}
+
+.Input:focused {
+    -fx-focus-color : #cb3663;
+    -fx-faint-focus-color : #cb366322;
+}
+
+#Search {
+	-fx-border-color : rgba(0,20,39,.3);
+    -fx-border-radius : 12;
+    -fx-text-box-border : transparent;
+    -fx-background-image : url("../../../../magnifyingglass.png");
+    -fx-background-size : 30;
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : 5 center;
+}
+
+#Search:focused {
+    -fx-focus-color : transparent;
+    -fx-border-width : 1.5;
+    -fx-border-color : rgba(0,20,39,.4);
+    -fx-faint-focus-color: transparent;
+}
+
+.Surface {
+    -fx-background-radius : 25;
+    -fx-border-radius : 25;
+    -fx-background-color : #FBFBFB;
+    -fx-border-color : rgba(0,20,39,.3);
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.DonatorTab {
+	-fx-border-color : rgba(0,20,39,.3);
+    -fx-border-radius : 12;
+	-fx-background-radius : 12;
+	-fx-background-color : white;
+}
+
+#Exit {
+    -fx-background-color : transparent;
+    -fx-border-color : white;
+    -fx-text-fill: white;
+    -fx-border-radius : 5;
+    -fx-background-radius : 5;
+    -fx-border-width : 2px;
+    -fx-text-font-weight: bolder;
+}
+
+#Exit:hover {
+    -fx-background-color : white;
+    -fx-text-fill: #fa5050;
+}
+
+.IconButton {
+     -fx-background-color : transparent;
+     -fx-text-fill : white;
+     -fx-border-style: hidden solid hidden hidden;
+     -fx-border-color: transparent;
+     -fx-border-width: 3px;
+     -fx-transition: -fx-border-color 1s;
+}
+
+.IconButton:hover {
+     -fx-border-color: white;
+     -fx-background-color : linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,0.1),rgba(255,255,255,0.5));
+}
+
+.IconButton:pressed {
+     -fx-border-color: white;
+     -fx-background-color : linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,0.3),rgba(255,255,255,0.8));
+}
+
+/* chart management */
+.chart, .chart-plot-background  {
+    -fx-background-color: transparent
+}
+
+.chart-horizontal-grid-lines, .chart-vertical-grid-lines, .axis-tick-mark, .axis-minor-tick-mark  {
+    -fx-stroke: transparent
+}
+
+.chart-bar{
+    -fx-background-radius: 12 12 0 0
+}
+
+.axis{
+    -fx-tick-label-font-family: system-ui;
+    -fx-tick-label-font-weight: bolder
+}
+
+/* Table management */
+.table-view {
+    -fx-background-radius : 12;
+    -fx-border-radius : 12;
+    -fx-background-color : #FBFBFB;
+    -fx-border-color : rgba(0,20,39,.3);
+}
+
+.table-row-cell:odd {
+    -fx-background-color : rgba(0,20,39,.1)
+}
+
+.table-row-cell {
+    -fx-table-cell-border-color : transparent;
+}
+
+.table-row-cell:focused {
+    -fx-background-color : #ef4452;
+    -fx-border-color : transparent;
+}
+
+.table-row-cell:unfocused {
+    -fx-background-color : rgba(239, 68, 82,.5);
+    -fx-border-color : transparent;
+}
+
+.table-view .column-header{
+    -fx-background-color : rgba(0,20,39,.2);
+}
+
+.table-view .column-header-background  {
+    -fx-background-color : transparent;
+}
+
+.table-view .column-header .label  {
+    -fx-text-fill : white;
+}
+
+#border-left {
+    -fx-background-radius: 10 0 0 0
+}
+
+#border-right {
+    -fx-background-radius: 0 10 0 0
+}
+
+/* Icon management */
+#username  {
+	-fx-background-image : url("../../../../usericon.png");
+	-fx-background-repeat : no-repeat;
+    -fx-background-position : 5 center;
+    -fx-background-size : 30;
+}
+#password  {
+	-fx-background-image : url("../../../../passlock.png");
+	-fx-background-repeat : no-repeat;
+    -fx-background-position : 5 center;
+    -fx-background-size : 30;
+}

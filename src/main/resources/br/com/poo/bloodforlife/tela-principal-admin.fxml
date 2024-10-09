@@ -1,40 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalAdmin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalAdmin">
     <children>
-        <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
-            <children>
-                <BarChart fx:id="barChartSangue" layoutX="335.0" layoutY="128.0" prefHeight="451.0" prefWidth="904.0" style="-fx-background-color: #ffffff;">
+      <ImageView fitHeight="681.0" fitWidth="331.0" layoutX="-29.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../SideScroll.png" />
+         </image>
+      </ImageView>
+        <Text fx:id="boasVindas" fill="WHITE" layoutX="63.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Template" wrappingWidth="112.46308898925781">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Text>
+        <Button id="Exit" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="51.0" layoutY="80.0" mnemonicParsing="false" onAction="#sair" prefHeight="33.0" prefWidth="80.0" text="Sair" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+      <Pane layoutX="236.0" layoutY="61.0" prefHeight="538.0" prefWidth="991.0" styleClass="Surface">
+         <children>
+                <BarChart fx:id="barChartSangue" layoutX="10.0" layoutY="16.0" prefHeight="511.0" prefWidth="965.0">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis side="LEFT" />
+                        <NumberAxis prefHeight="316.0" prefWidth="29.0" side="LEFT" />
                     </yAxis>
                 </BarChart>
-                <Button layoutX="73.0" layoutY="264.0" mnemonicParsing="false" onAction="#listarDoador" text="Lista de Doadores" />
-                <Button layoutX="75.0" layoutY="311.0" mnemonicParsing="false" onAction="#listarUsuario" text="Lista de Usuários" />
-                <Button layoutX="75.0" layoutY="354.0" mnemonicParsing="false" onAction="#listarDoacao" text="Lista de Doações" />
-            </children>
-        </Pane>
-        <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Text>
-        <Button layoutX="24.0" layoutY="566.0" mnemonicParsing="false" onAction="#sair" prefHeight="17.0" prefWidth="248.0" style="-fx-background-color: #34495e;" text="Sair" textFill="WHITE">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Button>
+         </children>
+      </Pane>
+      <FlowPane alignment="TOP_CENTER" layoutX="-1.0" layoutY="175.0" prefHeight="371.0" prefWidth="183.0" vgap="10.0">
+         <children>
+                <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#listarDoador" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doadores">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_data.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Button>
+                <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#listarUsuario" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Usuários">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="40.0" />
+               </padding>
+            </Button>
+                <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#listarDoacao" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doações">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_graphs.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <FlowPane.margin>
+                  <Insets />
+               </FlowPane.margin>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="43.0" />
+               </padding>
+            </Button>
+         </children>
+      </FlowPane>
+      <ImageView fitHeight="53.0" fitWidth="143.0" layoutX="22.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Button_user.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

@@ -25,7 +25,7 @@ public class ControladorTelaPrincipalAdmin {
     @FXML
     protected void initialize(){
         // Exibe o nome do usuário logado
-        boasVindas.setText("Usuário Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
+        boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
 
         // Preenche o gráfico de barras com os dados do estoque de sangue
         preencherGrafico();
@@ -45,6 +45,7 @@ public class ControladorTelaPrincipalAdmin {
         });
 
         barChartSangue.getData().add(series);
+        barChartSangue.setLegendVisible(false);
     }
 
     @FXML
