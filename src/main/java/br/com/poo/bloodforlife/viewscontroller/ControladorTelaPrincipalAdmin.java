@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -21,21 +22,26 @@ public class ControladorTelaPrincipalAdmin {
     @FXML
     private BarChart<String, Number> barChartSangue;
 
+    @FXML
+    private VBox legendaContainer;
+
     private ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
 
     @FXML
     protected void initialize(){
-        // Exibe o nome do usuário logado
         boasVindas.setText("Usuário Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
 
-        // Preenche o gráfico de barras com os dados do estoque de sangue
         preencherGrafico();
+
+        adicionarLegenda();
     }
 
     private void preencherGrafico() {
         // Cria uma série para os dados do estoque de sangue
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Estoque de Sangue");
+        barChartSangue.setLegendVisible(false);
+
 
         // Obtém o estoque do arquivo serial
         var bancoSangue = controladorArquivoBancoSangue.lerEstoqueBancoSangue();
@@ -91,6 +97,13 @@ public class ControladorTelaPrincipalAdmin {
                 }
             }
         }
+    }
+
+    private void adicionarLegenda() {
+        Text estoqueMinimoLegenda = new Text("Estoque Mínimo (< 75 unidades) - Vermelho");
+        Text avisoEstoqueLegenda = new Text("Aviso de Estoque (75 - 100 unidades) - Laranja");
+
+        legendaContainer.getChildren().addAll(estoqueMinimoLegenda, avisoEstoqueLegenda);
     }
 
 
