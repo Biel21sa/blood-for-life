@@ -1,0 +1,40 @@
+
+#background_main
+{
+    -fx-background-image : url("../../../../Background.png");
+    -fx-background-size : cover;
+}
+
+.Input
+{
+    -fx-background-radius : 12;
+    -fx-text-box-border : transparent;
+}
+
+.Surface
+{
+    -fx-background-radius : 25;
+    -fx-border-radius : 25;
+    -fx-background-color : #FBFBFB;
+    -fx-border-color : rgba(0,20,39,.3);
+
+
+}
+
+.IconButton
+{
+     -fx-background-color : transparent;
+     -fx-background-repeat: no-repeat;
+     -fx-background-size : cover;
+     -fx-background-position : center center;
+     -fx-text-fill : transparent;
+}
+
+.button:focus {-fx-opacity : 50%}
+
+/* Icon management */
+#menu {-fx-background-image : url("../../../../Button_menu.png");}
+#home {-fx-background-image : url("../../../../Button_home.png");}
+#user {-fx-background-image : url("../../../../Button_user.png");}
+#graphs {-fx-background-image : url("../../../../Button_graphs.png");}
+#data {-fx-background-image : url("../../../../Button_data.png");}
