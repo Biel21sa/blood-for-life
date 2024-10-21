@@ -13,7 +13,6 @@ public class BloodForLive extends Application {
     private static Controlador bancoDeSangue = new Controlador("Hemocentro");
     private static Usuario usuarioLogado = null;
 
-
     @Override
     public void start(Stage stage) throws IOException {
         ControladorDeCena.setSceneStage(stage);

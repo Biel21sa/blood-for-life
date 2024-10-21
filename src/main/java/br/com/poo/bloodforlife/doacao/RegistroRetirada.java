@@ -1,15 +1,14 @@
 package br.com.poo.bloodforlife.doacao;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
-public class RegistroDoacao implements Serializable {
+public class RegistroRetirada {
     private LocalDate data;
     private String tipoSangue;
     private double quantidade;
     private String doador;
 
-    public RegistroDoacao(LocalDate data, String tipoSangue, double quantidade, String doador) {
+    public RegistroRetirada(LocalDate data, String tipoSangue, double quantidade, String doador) {
         this.data = data;
         this.tipoSangue = tipoSangue;
         this.quantidade = quantidade;
