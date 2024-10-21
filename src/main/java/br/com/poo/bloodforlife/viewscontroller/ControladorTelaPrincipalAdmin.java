@@ -4,8 +4,10 @@ import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.main.BloodForLive;
 import br.com.poo.bloodforlife.manipulacaoarquivo.ControladorArquivoBancoSangue;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -20,33 +22,90 @@ public class ControladorTelaPrincipalAdmin {
     @FXML
     private BarChart<String, Number> barChartSangue;
 
+    @FXML
+    private VBox legendaContainer;
+
     private ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
 
     @FXML
     protected void initialize(){
-        // Exibe o nome do usuário logado
         boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
 
-        // Preenche o gráfico de barras com os dados do estoque de sangue
         preencherGrafico();
+
+        //adicionarLegenda();
     }
 
     private void preencherGrafico() {
         // Cria uma série para os dados do estoque de sangue
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Estoque de Sangue");
+        barChartSangue.setLegendVisible(false);
+
 
         // Obtém o estoque do arquivo serial
         var bancoSangue = controladorArquivoBancoSangue.lerEstoqueBancoSangue();
 
+        // Defina as cores harmoniosas para cada tipo sanguíneo
+        String[] cores = {
+                "#A3F188",
+                "#C3F188",
+                "#CFF188",
+                "#E2F188",
+                "#B0F188",
+                "#FFF48D",
+                "#FFF06C",
+                "#D7EA67"
+        };
+
+        // Mapeamento de tipos sanguíneos
+        String[] tiposSanguineos = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+
+        // Define o estoque mínimo e o valor de aviso
+        final int ESTOQUE_MINIMO = 75;
+        final int AVISO_ESTOQUE = 100; // valor para indicar que o estoque está se aproximando do mínimo
+
         // Adiciona cada tipo sanguíneo e sua quantidade ao gráfico
         bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
-            series.getData().add(new XYChart.Data<>(tipo, quantidade));
+            XYChart.Data<String, Number> data = new XYChart.Data<>(tipo, quantidade);
+            series.getData().add(data);
         });
 
         barChartSangue.getData().add(series);
-        barChartSangue.setLegendVisible(false);
+
+        // Aplicar as cores e estilos às barras
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            String tipo = data.getXValue();
+            Number quantidade = data.getYValue();
+
+            for (int i = 0; i < tiposSanguineos.length; i++) {
+                if (tiposSanguineos[i].equals(tipo)) {
+                    // Obtém o nó da barra e define sua cor e estilo
+                    Node node = data.getNode();
+                    if (node != null) {
+                        if (quantidade.intValue() < ESTOQUE_MINIMO) {
+                            // Estoque abaixo do mínimo (vermelho)
+                            node.setStyle("-fx-bar-fill: #F18888;");
+                        } else if (quantidade.intValue() < AVISO_ESTOQUE) {
+                            // Estoque próximo do mínimo (amarelo)
+                            node.setStyle("-fx-bar-fill: #FFC48D;");
+                        } else {
+                            // Estoque acima do valor de aviso, usar a cor padrão
+                            node.setStyle("-fx-bar-fill: " + cores[i] + ";");
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    private void adicionarLegenda() {
+        Text estoqueMinimoLegenda = new Text("Estoque Mínimo (< 75 unidades) - Vermelho");
+        Text avisoEstoqueLegenda = new Text("Aviso de Estoque (75 - 100 unidades) - Laranja");
+
+        legendaContainer.getChildren().addAll(estoqueMinimoLegenda, avisoEstoqueLegenda);
+    }
+
 
     @FXML
     protected void listarDoador() throws IOException {

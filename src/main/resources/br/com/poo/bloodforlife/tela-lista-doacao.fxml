@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaListaDoacao">
    <children>
       <TableView fx:id="tabelaDoacao" layoutX="240.0" layoutY="67.0" prefHeight="537.0" prefWidth="782.0">
          <columns>
-            <TableColumn id="border-left" fx:id="dataDoacao" prefWidth="194.0" text="Data" />
-            <TableColumn fx:id="doadorDoacao" prefWidth="194.0" text="Doador" />
-            <TableColumn fx:id="tipoSangueDoacao" prefWidth="195.0" text="Tipo de Sangue" />
-            <TableColumn id="border-right" fx:id="quantidadeDoacao" prefWidth="194.1" text="Quantidade" />
+            <TableColumn id="border-left" fx:id="dataDoacao" prefWidth="194.0" text="DATA" />
+            <TableColumn fx:id="doadorDoacao" prefWidth="194.0" text="DOADOR" />
+            <TableColumn fx:id="tipoSangueDoacao" prefWidth="195.0" text="TIPO DE SANGUE" />
+            <TableColumn id="border-right" fx:id="quantidadeDoacao" prefWidth="194.1" text="QUANTIDADE" />
          </columns>
       </TableView>
       <ImageView fitHeight="681.0" fitWidth="331.0" layoutX="-29.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
@@ -22,7 +27,92 @@
             <Image url="@../../../../SideScroll.png" />
          </image>
       </ImageView>
-      <Button layoutX="70.0" layoutY="62.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Button layoutX="1097.0" layoutY="335.0" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar Doação" />
+      <Button layoutX="224.0" layoutY="30.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Button alignment="TOP_LEFT" contentDisplay="TOP" layoutX="1046.0" layoutY="449.0" mnemonicParsing="false" onAction="#registrarDoacao" prefHeight="156.0" prefWidth="121.0" styleClass="AdderButton" text="Adicionar doador" textAlignment="CENTER" textFill="#001427" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../blood_add.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic></Button>
+      <ImageView fitHeight="53.0" fitWidth="143.0" layoutX="22.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Logo.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="boasVindas" fill="WHITE" layoutX="63.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Template" wrappingWidth="112.46308898925781">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Button id="Exit" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="51.0" layoutY="80.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="80.0" text="Sair" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <FlowPane alignment="TOP_CENTER" layoutX="-1.0" layoutY="175.0" prefHeight="371.0" prefWidth="183.0" vgap="10.0">
+         <children>
+            <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doadores">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_data.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Button>
+            <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Usuários">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="40.0" />
+               </padding>
+            </Button>
+            <Button disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doações">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_graphs.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <FlowPane.margin>
+                  <Insets />
+               </FlowPane.margin>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="43.0" />
+               </padding>
+            </Button>
+         </children>
+      </FlowPane>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Button_user.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

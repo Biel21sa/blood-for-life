@@ -1,33 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalVisualizador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaPrincipalClinica">
    <children>
-      <AnchorPane layoutX="-16.0" layoutY="5.0" prefHeight="650.0" prefWidth="1300.0">
+      <ImageView fitHeight="1309.0" fitWidth="460.0" layoutX="420.0" layoutY="-606.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../../../../SideScroll.png" />
+         </image>
+      </ImageView>
+      <TextField id="Search" fx:id="campoCpf" layoutX="369.0" layoutY="153.0" prefHeight="46.0" prefWidth="514.0" promptText="Pesquisar CPF">
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Button layoutX="894.0" layoutY="164.0" mnemonicParsing="false" onAction="#verificar" text="Buscar" />
+      <Button id="Exit" layoutX="1213.0" layoutY="23.0" mnemonicParsing="false" onAction="#sair" prefHeight="27.0" prefWidth="73.0" text="Sair" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <padding>
+            <Insets bottom="-1.0" />
+         </padding>
+      </Button>
+      <FlowPane alignment="CENTER_LEFT" hgap="30.0" layoutX="190.0" layoutY="383.0" prefHeight="53.0" prefWidth="873.0" styleClass="Surface">
          <children>
-            <Pane layoutX="-2.0" layoutY="-13.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;" />
-            <Text fx:id="boasVindas" layoutX="24.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.12974548339844">
+            <Text fx:id="nomeDoador" fill="#001426" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="284.0">
                <font>
-                  <Font size="16.0" />
+                  <Font size="27.0" />
                </font>
             </Text>
-            <Button layoutX="24.0" layoutY="566.0" mnemonicParsing="false" onAction="#sair" prefHeight="17.0" prefWidth="248.0" style="-fx-background-color: #34495e;" text="Sair" textFill="WHITE">
+            <Text fx:id="cpfDoador" fill="#001426" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="215.0">
                <font>
-                  <Font size="14.0" />
+                  <Font size="27.0" />
                </font>
-            </Button>
-            <Text fx:id="nomeDoador" layoutX="367.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="cpfDoador" layoutX="442.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="statusDoador" layoutX="560.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            </Text>
+            <Text fx:id="statusDoador" fill="#001426" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="268.0001220703125">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
          </children>
-      </AnchorPane>
-      <TextField fx:id="campoCpf" layoutX="367.0" layoutY="303.0" promptText="cpf" />
-      <Button layoutX="546.0" layoutY="303.0" mnemonicParsing="false" onAction="#verificar" text="Buscar" />
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </FlowPane>
+      <ImageView fitHeight="53.0" fitWidth="143.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Logo.png" />
+         </image>
+      </ImageView>
+      <FlowPane alignment="TOP_CENTER" hgap="8.0" layoutX="550.0" layoutY="12.0" prefHeight="77.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Button_user.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="boasVindas" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="your mom" wrappingWidth="100.12974548339844">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </FlowPane>
    </children>
 </AnchorPane>

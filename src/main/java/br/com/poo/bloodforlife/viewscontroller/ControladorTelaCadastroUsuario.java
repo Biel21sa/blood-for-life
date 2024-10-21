@@ -26,6 +26,6 @@ public class ControladorTelaCadastroUsuario {
 
     @FXML
     public void voltar()  throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaListaUsuario.FXML_PATH);
     }
 }

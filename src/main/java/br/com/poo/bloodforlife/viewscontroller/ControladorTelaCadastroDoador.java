@@ -90,6 +90,6 @@ public class ControladorTelaCadastroDoador {
 
     @FXML
     public void voltar() throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaListaDoador.FXML_PATH);
     }
 }

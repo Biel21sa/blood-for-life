@@ -27,7 +27,6 @@ public class RegistroDoacao implements Serializable {
     public double getQuantidade() {
         return quantidade;
     }
-
     public String getDoador() {
         return doador;
     }

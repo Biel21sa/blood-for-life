@@ -1,3 +1,9 @@
+/* sim eu fiz tudo em um só .css
+isso tá uma aberração, eu sei, não me julge */
+
+.root {
+    -fx-background-color : white;
+}
 
 #background_main {
     -fx-background-image : url("../../../../Background.png");
@@ -21,6 +27,7 @@
 #Search {
 	-fx-border-color : rgba(0,20,39,.3);
     -fx-border-radius : 12;
+    -fx-background-radius : 12;
     -fx-text-box-border : transparent;
     -fx-background-image : url("../../../../magnifyingglass.png");
     -fx-background-size : 30;
@@ -42,6 +49,21 @@
     -fx-border-color : rgba(0,20,39,.3);
 }
 
+.WhiteSurface {
+    -fx-background-radius : 25;
+    -fx-border-radius : 25;
+    -fx-background-color : white;
+    -fx-border-color : rgba(0,20,39,.3);
+}
+
+.DottedSurface {
+    -fx-background-color : transparent;
+    -fx-border-color :  rgba(0,20,39,.3);
+    -fx-border-style : dashed;
+    -fx-border-radius : 12;
+    -fx-border-width : 2;
+}
+
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
 }
@@ -51,6 +73,128 @@
     -fx-border-radius : 12;
 	-fx-background-radius : 12;
 	-fx-background-color : white;
+}
+
+.RedButton {
+    -fx-background-color : #E54B4B;
+    -fx-background-radius : 20;
+    -fx-text-fill: white;
+    -fx-background-size: 30px;
+}
+
+.Cancel_RedButton {
+    -fx-border-color : #E54B4B;
+    -fx-background-radius : 0 12 0 12;
+    -fx-border-radius : 0 12 0 12;
+    -fx-border-width : 2;
+    -fx-text-fill: #E54B4B;
+    -fx-background-color: transparent;
+}
+
+.Confirm_RedButton {
+    -fx-background-color : #E54B4B;
+    -fx-background-radius : 12 0 12 0;
+    -fx-text-fill: white;
+}
+
+.TabInput {
+	-fx-border-color : rgba(0,20,39,.3);
+    -fx-border-radius : 12;
+    -fx-background-radius : 12;
+    -fx-text-box-border : transparent;
+}
+
+.TabInput:focused {
+    -fx-focus-color : transparent;
+    -fx-border-width : 1.5;
+    -fx-border-color : rgba(0,20,39,.4);
+    -fx-faint-focus-color: transparent;
+}
+
+#TabCombo .combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color : #E54B4B;
+}
+
+#TabCombo .combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color : #7A3557;
+}
+
+#TabCombo, #TabDate .arrow-button  {
+    -fx-region-background : transparent;
+}
+
+#TabDate .selected, #TabDate .selected:focused, #TabDate .cell:hover {
+    -fx-background-color : #7A3557;
+}
+
+#TabDate .date-picker-popup .month-year-pane {
+    -fx-background-color : #E54B4B;
+}
+
+#TabDate .date-picker-popup .month-year-pane .label {
+    -fx-text-fill : white;
+}
+
+#TabDate .arrow-button {
+    -fx-background-color : transparent;
+}
+
+#TabDate {
+    -fx-region-background : transparent;
+}
+
+#TabDate .date-picker-display-node {
+    -fx-background-color : transparent;
+}
+
+.RedButton:hover {
+    -fx-border-color : #E54B4B;
+    -fx-border-radius : 20;
+    -fx-border-width : 2;
+    -fx-text-fill: #E54B4B;
+    -fx-background-color: transparent;
+}
+
+.Confirm_RedButton:hover {
+    -fx-border-color : #E54B4B;
+    -fx-border-width : 2;
+    -fx-border-radius : 12 0 12 0;
+    -fx-text-fill: #E54B4B;
+    -fx-background-color: transparent;
+}
+
+.Cancel_RedButton:hover {
+    -fx-background-color : #E54B4B;
+    -fx-text-fill: white;
+}
+
+#clinic {
+    -fx-background-image : url("../../../../clinic.png");
+    -fx-background-size : 40;
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : 8 center;
+}
+#visualizer {
+    -fx-background-image : url("../../../../visualizer.png");
+    -fx-background-size : 40;
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : 8 center;
+}
+#admin {
+    -fx-background-image : url("../../../../admin.png");
+    -fx-background-size : 40;
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : 8 center;
+}
+
+#clinic: hover{
+    -fx-background-image : url("../../../../clinic_hover.png");
+}
+#visualizer: hover{
+    -fx-background-image : url("../../../../visualizer_hover.png");
+}
+#admin: hover{
+    -fx-background-image : url("../../../../admin_hover.png");
 }
 
 #Exit {
@@ -85,6 +229,20 @@
 .IconButton:pressed {
      -fx-border-color: white;
      -fx-background-color : linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,0.3),rgba(255,255,255,0.8));
+}
+
+.AdderButton {
+    -fx-background-color : transparent;
+    -fx-border-color :  rgba(0,20,39,.3);
+    -fx-border-style : dashed;
+    -fx-border-radius : 12;
+    -fx-border-width : 2;
+    -fx-opacity : 70%;
+}
+
+.AdderButton:hover {
+    -fx-opacity : 100%;
+    -fx-border-color :  rgba(0,20,39,.8)
 }
 
 /* chart management */
@@ -163,4 +321,15 @@
 	-fx-background-repeat : no-repeat;
     -fx-background-position : 5 center;
     -fx-background-size : 30;
+}
+
+#donator {
+    -fx-background-image : url("../../../../donator_minus.png");
+    	-fx-background-repeat : no-repeat;
+        -fx-background-position : 6 center;
+        -fx-background-size : 50;
+        -fx-border-color :  rgba(0,20,39,.3);
+        -fx-border-style : dashed;
+        -fx-border-radius : 12;
+        -fx-border-width : 2;
 }

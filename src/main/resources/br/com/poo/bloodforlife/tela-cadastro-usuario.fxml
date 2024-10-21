@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaCadastroUsuario">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaCadastroUsuario">
    <children>
-      <Pane layoutX="-13.0" layoutY="-1.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
+      <ImageView fitHeight="681.0" fitWidth="331.0" layoutX="-29.0" layoutY="-30.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../SideScroll.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="259.0" layoutY="57.0" opacity="0.6" prefHeight="537.0" prefWidth="782.0" styleClass="Surface" />
+      <FlowPane alignment="TOP_CENTER" layoutX="493.0" layoutY="138.0" orientation="VERTICAL" prefHeight="346.0" prefWidth="315.0" styleClass="WhiteSurface" vgap="10.0">
          <children>
-            <Text layoutX="370.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro De Usuários">
+            <Button id="clinic" alignment="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#cadastrarClinica" prefHeight="50.0" prefWidth="250.0" styleClass="RedButton" text="Clínica">
                <font>
-                  <Font size="64.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
-            </Text>
-            <Button layoutX="541.0" layoutY="283.0" mnemonicParsing="false" onAction="#cadastrarClinica" text="Clinica" />
-            <Button layoutX="540.0" layoutY="333.0" mnemonicParsing="false" onAction="#cadastrarVisualizador" text="Visualizador" />
-            <Button layoutX="65.0" layoutY="76.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-            <Button layoutX="540.0" layoutY="377.0" mnemonicParsing="false" onAction="#cadastrarAdministrador" text="Administrador" />
+               <FlowPane.margin>
+                  <Insets />
+               </FlowPane.margin>
+            </Button>
+            <Button id="visualizer" mnemonicParsing="false" onAction="#cadastrarVisualizador" prefHeight="50.0" prefWidth="250.0" styleClass="RedButton" text="Visualizador">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button id="admin" mnemonicParsing="false" onAction="#cadastrarAdministrador" prefHeight="50.0" prefWidth="250.0" styleClass="RedButton" text="Administrador">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
          </children>
-      </Pane>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </FlowPane>
+      <Button layoutX="609.0" layoutY="407.0" mnemonicParsing="false" onAction="#voltar" prefHeight="35.0" prefWidth="79.0" styleClass="RedButton" text="Cancelar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -88,6 +88,6 @@ public class ControladorTelaRegistroDoacao {
 
     @FXML
     public void voltar() throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaListaDoacao.FXML_PATH);
     }
 }

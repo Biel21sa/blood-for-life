@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Identificacao implements Serializable {
     private int ultimoIDUsuario;
-
     public Identificacao() {
         this.ultimoIDUsuario = 0;
     }

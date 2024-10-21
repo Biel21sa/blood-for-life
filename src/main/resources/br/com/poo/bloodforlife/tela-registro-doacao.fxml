@@ -4,27 +4,47 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaRegistroDoacao">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaRegistroDoacao">
    <children>
-      <Pane layoutX="-19.0" layoutY="-6.0" prefHeight="690.0" prefWidth="1306.0" style="-fx-background-color: #f79191;">
+      <Pane layoutX="240.0" layoutY="67.0" opacity="0.6" prefHeight="537.0" prefWidth="782.0" styleClass="Surface" />
+      <ImageView fitHeight="681.0" fitWidth="331.0" layoutX="-29.0" layoutY="-30.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../SideScroll.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="454.0" layoutY="118.0" prefHeight="386.0" prefWidth="354.0" styleClass="WhiteSurface">
          <children>
-            <Text layoutX="397.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Doação">
+            <Text fill="#e54b4b" layoutX="15.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Doação" textAlignment="CENTER" wrappingWidth="323.08984375">
                <font>
-                  <Font size="64.0" />
+                  <Font name="System Bold" size="40.0" />
                </font>
             </Text>
-            <TextField fx:id="campoCpf" layoutX="357.0" layoutY="293.0" promptText="cpf" />
-            <Button layoutX="611.0" layoutY="480.0" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar" />
-            <Button layoutX="68.0" layoutY="101.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-            <ComboBox fx:id="campoTipo" layoutX="801.0" layoutY="293.0" prefWidth="150.0" promptText="Tipo" />
-            <DatePicker fx:id="campoData" layoutX="556.0" layoutY="293.0" />
-            <TextField fx:id="campoQuantidade" layoutX="568.0" layoutY="383.0" promptText="quantidade(ml)" />
+            <FlowPane alignment="CENTER" layoutX="25.0" layoutY="76.0" orientation="VERTICAL" prefHeight="217.0" prefWidth="303.0" vgap="20.0">
+               <children>
+                  <TextField fx:id="campoCpf" prefWidth="280.0" promptText="CPF do Doador" styleClass="TabInput" />
+                  <ComboBox id="TabCombo" fx:id="campoTipo" prefWidth="280.0" promptText="Tipo Sanguíneo" styleClass="TabInput" />
+                  <TextField fx:id="campoQuantidade" prefWidth="280.0" promptText="Quantidade (ml)" styleClass="TabInput" />
+                  <DatePicker id="TabDate" fx:id="campoData" prefWidth="280.0" promptText="Data da Doação" styleClass="TabInput" />
+               </children>
+            </FlowPane>
+            <Button layoutX="81.0" layoutY="293.0" mnemonicParsing="false" onAction="#registrarDoacao" prefHeight="50.0" prefWidth="90.0" styleClass="Confirm_RedButton" text="Registrar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="183.0" layoutY="293.0" mnemonicParsing="false" onAction="#voltar" prefHeight="50.0" prefWidth="90.0" styleClass="Cancel_RedButton" text="Voltar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
