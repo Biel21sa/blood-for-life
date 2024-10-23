@@ -5,6 +5,16 @@ isso tá uma aberração, eu sei, não me julge */
     -fx-background-color : white;
 }
 
+#bg_home {
+    -fx-background-image : url("../../../../home_bg.png");
+    -fx-background-size : auto;
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : 5cm center;
+}
+#mid {
+    -fx-background-color : linear-gradient(to right,rgba(255,255,255,1),rgba(255,255,255,0),rgba(255,255,255,1));
+}
+
 #background_main {
     -fx-background-image : url("../../../../Background.png");
     -fx-background-size : cover;
@@ -33,6 +43,15 @@ isso tá uma aberração, eu sei, não me julge */
     -fx-background-size : 30;
     -fx-background-repeat : no-repeat;
     -fx-background-position : 5 center;
+}
+
+#Edit {
+    -fx-background-color : transparent;
+    -fx-opacity : 0.5;
+}
+
+#Edit:hover {
+    -fx-opacity : 1;
 }
 
 #Search:focused {
@@ -257,6 +276,15 @@ isso tá uma aberração, eu sei, não me julge */
 .chart-bar{
     -fx-background-radius: 12 12 0 0
 }
+
+.chart-legend{
+    -fx-background-color: transparent
+}
+
+.chart-legend-item-symbol{
+    -fx-background-radius: 12 12 12 12
+}
+
 
 .axis{
     -fx-tick-label-font-family: system-ui;

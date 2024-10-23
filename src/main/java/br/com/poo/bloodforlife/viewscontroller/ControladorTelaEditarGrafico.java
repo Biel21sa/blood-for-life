@@ -1,6 +1,5 @@
 package br.com.poo.bloodforlife.viewscontroller;
 
-import br.com.poo.bloodforlife.controladores.Controlador;
 import br.com.poo.bloodforlife.controladores.ControladorDeCena;
 import br.com.poo.bloodforlife.doacao.Doador;
 import br.com.poo.bloodforlife.doacao.RegistroDoacao;
@@ -16,9 +15,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class ControladorTelaRegistroDoacao {
+public class ControladorTelaEditarGrafico {
 
-    public static final String FXML_PATH = "tela-registro-doacao.fxml";
+    public static final String FXML_PATH = "tela-editar-grafico.fxml";
 
     @FXML
     private TextField campoCpf;
@@ -93,7 +92,50 @@ public class ControladorTelaRegistroDoacao {
     }
 
     @FXML
+    public void retirar() throws IOException {
+        String cpf = campoCpf.getText();
+        String tipoSanguineo = campoTipo.getValue();
+        LocalDate data = campoData.getValue();
+        String quantidadeTexto = campoQuantidade.getText();
+        Integer quantidade = null;
+
+        if (cpf == null || cpf.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do CPF está vazio!");
+            return;
+        }
+
+        if (data == null) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo da data está vazio!");
+            return;
+        }
+
+        if (tipoSanguineo == null || tipoSanguineo.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo do tipo sanguíneo está vazio!");
+            return;
+        }
+
+        if (quantidadeTexto == null || quantidadeTexto.trim().isEmpty()) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Campo da quantidade está vazio!");
+            return;
+        }
+
+        try {
+            quantidade = Integer.parseInt(quantidadeTexto);
+        } catch (NumberFormatException e) {
+            ControladorAlerta.showAlert(Alert.AlertType.ERROR, "Erro", "Quantidade deve ser um número inteiro válido!");
+            return;
+        }
+
+        ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
+        controladorArquivoBancoSangue.removerQuantidade(tipoSanguineo, quantidade);
+
+        ControladorAlerta.showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Retirado com sucesso!");
+
+        ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
+    }
+
+    @FXML
     public void voltar() throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaListaDoacao.FXML_PATH);
+        ControladorDeCena.trocarCena(ControladorTelaGraficoEstoque.FXML_PATH);
     }
 }

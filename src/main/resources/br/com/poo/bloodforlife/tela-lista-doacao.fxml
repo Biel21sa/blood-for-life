@@ -27,7 +27,6 @@
             <Image url="@../../../../SideScroll.png" />
          </image>
       </ImageView>
-      <Button layoutX="224.0" layoutY="30.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
       <Button alignment="TOP_LEFT" contentDisplay="TOP" layoutX="1046.0" layoutY="449.0" mnemonicParsing="false" onAction="#registrarDoacao" prefHeight="156.0" prefWidth="121.0" styleClass="AdderButton" text="Adicionar doador" textAlignment="CENTER" textFill="#001427" textOverrun="WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -52,14 +51,14 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Button id="Exit" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="51.0" layoutY="80.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="80.0" text="Sair" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+      <Button id="Exit" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="51.0" layoutY="80.0" mnemonicParsing="false" onAction="#sair" prefHeight="33.0" prefWidth="80.0" text="Sair" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
       <FlowPane alignment="TOP_CENTER" layoutX="-1.0" layoutY="175.0" prefHeight="371.0" prefWidth="183.0" vgap="10.0">
          <children>
-            <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doadores">
+            <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#listarDoador" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doadores">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,7 +73,7 @@
                   <Insets right="30.0" />
                </padding>
             </Button>
-            <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Usuários">
+            <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#listarUsuario" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Usuários">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -91,9 +90,9 @@
             </Button>
             <Button disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doações">
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Button_graphs.png" />
+                        <Image url="@../../../../button_donate.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -104,7 +103,37 @@
                   <Font size="17.0" />
                </font>
                <padding>
-                  <Insets right="43.0" />
+                  <Insets right="44.0" />
+               </padding>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#graficoMensal" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Gráfico Mensal">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../button_monthstock.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="6.0" />
+               </padding>
+            </Button>
+            <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#graficoEstoque" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Estoque">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Button_graphs.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets right="50.0" />
                </padding>
             </Button>
          </children>

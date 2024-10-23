@@ -7,11 +7,15 @@ import br.com.poo.bloodforlife.usuarios.Visualizador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class ControladorTelaCadastroVisualizador {
     public static final String FXML_PATH = "tela-cadastro-visualizador.fxml";
+
+    @FXML
+    private Text boasVindas;
 
     @FXML
     private TextField campoNome;
@@ -22,6 +26,10 @@ public class ControladorTelaCadastroVisualizador {
     @FXML
     private TextField campoSenha;
 
+    @FXML
+    public void initialize() throws IOException {
+        boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
+    }
 
     @FXML
     public void cadastrarVisualizador() throws IOException {

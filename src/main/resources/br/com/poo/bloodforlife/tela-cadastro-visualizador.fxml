@@ -49,5 +49,20 @@
             </FlowPane>
          </children>
       </Pane>
+      <ImageView fitHeight="53.0" fitWidth="143.0" layoutX="22.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Logo.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="boasVindas" fill="WHITE" layoutX="63.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Template" wrappingWidth="112.46308898925781">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Button_user.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

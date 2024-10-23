@@ -7,11 +7,15 @@ import br.com.poo.bloodforlife.usuarios.Clinica;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class ControladorTelaCadastroClinica {
     public static final String FXML_PATH = "tela-cadastro-clinica.fxml";
+
+    @FXML
+    private Text boasVindas;
 
     @FXML
     private TextField campoNome;
@@ -24,6 +28,11 @@ public class ControladorTelaCadastroClinica {
 
     @FXML
     private TextField campoCnpj;
+
+    @FXML
+    public void initialize() throws IOException {
+        boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
+    }
 
     @FXML
     public void cadastrarClinica() throws IOException{

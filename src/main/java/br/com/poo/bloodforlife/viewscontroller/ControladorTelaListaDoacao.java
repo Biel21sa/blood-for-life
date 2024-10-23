@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ import java.util.List;
 public class ControladorTelaListaDoacao {
 
     public static final String FXML_PATH = "tela-lista-doacao.fxml";
+
+    @FXML
+    private Text boasVindas;
 
     @FXML
     TableView<RegistroDoacao> tabelaDoacao;
@@ -39,6 +43,8 @@ public class ControladorTelaListaDoacao {
 
     @FXML
     public void initialize(){
+        boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
+
         dataDoacao.setCellValueFactory(new PropertyValueFactory<>("data"));
         doadorDoacao.setCellValueFactory(new PropertyValueFactory<>("doador"));
         tipoSangueDoacao.setCellValueFactory(new PropertyValueFactory<>("tipoSangue"));
@@ -63,7 +69,28 @@ public class ControladorTelaListaDoacao {
     }
 
     @FXML
-    public void voltar()  throws IOException {
-        ControladorDeCena.trocarCena(ControladorTelaPrincipalAdmin.FXML_PATH);
+    protected void listarDoador() throws IOException {
+        ControladorDeCena.trocarCena(ControladorTelaListaDoador.FXML_PATH);
+    }
+
+    @FXML
+    protected void listarUsuario() throws IOException {
+        ControladorDeCena.trocarCena(ControladorTelaListaUsuario.FXML_PATH);
+    }
+
+    @FXML
+    protected void graficoMensal() throws IOException {
+        ControladorDeCena.trocarCena(ControladorTelaGraficoMensal.FXML_PATH);
+    }
+
+    @FXML
+    protected void graficoEstoque() throws IOException {
+        ControladorDeCena.trocarCena(ControladorTelaGraficoEstoque.FXML_PATH);
+    }
+
+    @FXML
+    protected void sair() throws IOException {
+        BloodForLive.setUsuarioLogado(null);
+        ControladorDeCena.trocarCena(ControladorTelaLogin.FXML_PATH);
     }
 }

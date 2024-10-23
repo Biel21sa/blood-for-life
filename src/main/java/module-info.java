@@ -1,6 +1,7 @@
 module br.com.poo.bloodforlife {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.xml;
     //requires javafx.media;
 
     //requires net.synedra.validatorfx;

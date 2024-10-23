@@ -7,11 +7,15 @@ import br.com.poo.bloodforlife.usuarios.Administrador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class ControladorTelaCadastroAdmin {
     public static final String FXML_PATH = "tela-cadastro-admin.fxml";
+
+    @FXML
+    private Text boasVindas;
 
     @FXML
     private TextField campoNome;
@@ -21,6 +25,11 @@ public class ControladorTelaCadastroAdmin {
 
     @FXML
     private TextField campoSenha;
+
+    @FXML
+    public void initialize() throws IOException {
+        boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
+    }
 
     @FXML
     public void cadastrarAdministrador() throws IOException {

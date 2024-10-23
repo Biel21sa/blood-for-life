@@ -7,7 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Alert;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -19,93 +22,11 @@ public class ControladorTelaPrincipalAdmin {
     @FXML
     private Text boasVindas;
 
-    @FXML
-    private BarChart<String, Number> barChartSangue;
-
-    @FXML
-    private VBox legendaContainer;
-
-    private ControladorArquivoBancoSangue controladorArquivoBancoSangue = new ControladorArquivoBancoSangue();
 
     @FXML
     protected void initialize(){
         boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
-
-        preencherGrafico();
-
-        //adicionarLegenda();
     }
-
-    private void preencherGrafico() {
-        // Cria uma série para os dados do estoque de sangue
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Estoque de Sangue");
-        barChartSangue.setLegendVisible(false);
-
-
-        // Obtém o estoque do arquivo serial
-        var bancoSangue = controladorArquivoBancoSangue.lerEstoqueBancoSangue();
-
-        // Defina as cores harmoniosas para cada tipo sanguíneo
-        String[] cores = {
-                "#A3F188",
-                "#C3F188",
-                "#CFF188",
-                "#E2F188",
-                "#B0F188",
-                "#FFF48D",
-                "#FFF06C",
-                "#D7EA67"
-        };
-
-        // Mapeamento de tipos sanguíneos
-        String[] tiposSanguineos = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
-
-        // Define o estoque mínimo e o valor de aviso
-        final int ESTOQUE_MINIMO = 75;
-        final int AVISO_ESTOQUE = 100; // valor para indicar que o estoque está se aproximando do mínimo
-
-        // Adiciona cada tipo sanguíneo e sua quantidade ao gráfico
-        bancoSangue.getEstoqueSanguineo().forEach((tipo, quantidade) -> {
-            XYChart.Data<String, Number> data = new XYChart.Data<>(tipo, quantidade);
-            series.getData().add(data);
-        });
-
-        barChartSangue.getData().add(series);
-
-        // Aplicar as cores e estilos às barras
-        for (XYChart.Data<String, Number> data : series.getData()) {
-            String tipo = data.getXValue();
-            Number quantidade = data.getYValue();
-
-            for (int i = 0; i < tiposSanguineos.length; i++) {
-                if (tiposSanguineos[i].equals(tipo)) {
-                    // Obtém o nó da barra e define sua cor e estilo
-                    Node node = data.getNode();
-                    if (node != null) {
-                        if (quantidade.intValue() < ESTOQUE_MINIMO) {
-                            // Estoque abaixo do mínimo (vermelho)
-                            node.setStyle("-fx-bar-fill: #F18888;");
-                        } else if (quantidade.intValue() < AVISO_ESTOQUE) {
-                            // Estoque próximo do mínimo (amarelo)
-                            node.setStyle("-fx-bar-fill: #FFC48D;");
-                        } else {
-                            // Estoque acima do valor de aviso, usar a cor padrão
-                            node.setStyle("-fx-bar-fill: " + cores[i] + ";");
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void adicionarLegenda() {
-        Text estoqueMinimoLegenda = new Text("Estoque Mínimo (< 75 unidades) - Vermelho");
-        Text avisoEstoqueLegenda = new Text("Aviso de Estoque (75 - 100 unidades) - Laranja");
-
-        legendaContainer.getChildren().addAll(estoqueMinimoLegenda, avisoEstoqueLegenda);
-    }
-
 
     @FXML
     protected void listarDoador() throws IOException {
@@ -120,6 +41,16 @@ public class ControladorTelaPrincipalAdmin {
     @FXML
     protected void listarDoacao() throws IOException {
         ControladorDeCena.trocarCena(ControladorTelaListaDoacao.FXML_PATH);
+    }
+
+    @FXML
+    protected void graficoMensal() throws IOException {
+        ControladorDeCena.trocarCena(ControladorTelaGraficoMensal.FXML_PATH);
+    }
+
+    @FXML
+    protected void graficoEstoque() throws IOException {
+        ControladorDeCena.trocarCena(ControladorTelaGraficoEstoque.FXML_PATH);
     }
 
     @FXML

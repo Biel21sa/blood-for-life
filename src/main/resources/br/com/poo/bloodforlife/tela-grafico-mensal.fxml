@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,69 +13,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaListaDoador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" stylesheets="@Style_Main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.poo.bloodforlife.viewscontroller.ControladorTelaGraficoMensal">
    <children>
       <ImageView fitHeight="681.0" fitWidth="331.0" layoutX="-29.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../SideScroll.png" />
          </image>
       </ImageView>
-
-      <!-- Campo de pesquisa pelo CPF -->
-      <TextField id="Search" fx:id="campoPesquisaCpf" layoutX="215.0" layoutY="42.0" prefHeight="38.0" prefWidth="780.0" promptText="Pesquisar por CPF">
-         <padding>
-            <Insets left="35.0" />
-         </padding>
-      </TextField>
-      <Button layoutX="1010.0" layoutY="49.0" mnemonicParsing="false" onAction="#pesquisarDoador" text="Pesquisar" />
-
-      <TableView fx:id="tabelaDoador" layoutX="215.0" layoutY="88.0" prefHeight="537.0" prefWidth="782.0">
-         <columns>
-            <TableColumn id="border-left" fx:id="nomeDoador" prefWidth="194.0" text="NOME" />
-            <TableColumn fx:id="cpfDoador" prefWidth="194.0" text="CPF" />
-            <TableColumn fx:id="emailDoador" prefWidth="195.0" text="EMAIL" />
-            <TableColumn id="border-right" fx:id="statusDoador" prefWidth="194.1" text="STATUS" />
-         </columns>
-      </TableView>
-      <Button alignment="TOP_LEFT" layoutX="1029.0" layoutY="205.0" mnemonicParsing="false" onAction="#cadastrarDoador" prefHeight="52.0" prefWidth="209.0" styleClass="AdderButton" text="Cadastrar Doador" textFill="#001427" wrapText="true">
-         <graphic>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../donator_plus.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <padding>
-            <Insets left="5.0" top="4.0" />
-         </padding></Button>
-      <Pane layoutX="1029.0" layoutY="268.0" prefHeight="168.0" prefWidth="209.0" styleClass="DottedSurface">
-         <children>
-            <Text fill="#001324b2" layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Excluir Doador">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Text>
-            <TextField fx:id="campoDeletarDoador" layoutX="10.0" layoutY="52.0" prefHeight="25.0" prefWidth="190.0" promptText="Digite o CPF..." style="-fx-border-color: rgba(0,20,39,.3); -fx-border-radius: 5; -fx-text-box-border: transparent;" />
-            <Button layoutX="33.0" layoutY="100.0" mnemonicParsing="false" onAction="#excluirDoador" prefHeight="52.0" prefWidth="143.0" styleClass="AdderButton" text="Excluir" textFill="#001427" wrapText="true">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../donator_minus.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-               <padding>
-                  <Insets left="-20.0" />
-               </padding>
-            </Button>
-         </children>
-      </Pane>
       <Text fx:id="boasVindas" fill="WHITE" layoutX="63.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Template" wrappingWidth="112.46308898925781">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -88,7 +32,7 @@
       </Button>
       <FlowPane alignment="TOP_CENTER" layoutX="-1.0" layoutY="175.0" prefHeight="371.0" prefWidth="183.0" vgap="10.0">
          <children>
-            <Button disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doadores">
+            <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#listarDoador" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Doadores">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -136,7 +80,7 @@
                   <Insets right="44.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" onAction="#graficoMensal" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Gráfico Mensal">
+            <Button disable="true" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Gráfico Mensal">
                <font>
                   <Font size="17.0" />
                </font>
@@ -151,7 +95,7 @@
                   <Insets right="6.0" />
                </padding>
             </Button>
-            <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#graficoEstoque" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Estoque">
+            <Button graphicTextGap="10.0" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#graficoEstoque" prefHeight="46.0" prefWidth="184.0" styleClass="IconButton" text="Estoque">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -178,5 +122,17 @@
             <Image url="@../../../../Button_user.png" />
          </image>
       </ImageView>
+      <Pane layoutX="216.0" layoutY="34.0" prefHeight="582.0" prefWidth="1048.0" styleClass="Surface">
+         <children>
+            <BarChart fx:id="barChartSangue" layoutX="8.0" layoutY="8.0" prefHeight="567.0" prefWidth="1031.0" style="-fx-padding: 10;">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -35,7 +35,7 @@ public class ControladorTelaPrincipalVisualizador {
     @FXML
     protected void initialize(){
         // Exibe o nome do usuário logado
-        boasVindas.setText("Usuário Logado: \n" + BloodForLive.getUsuarioLogado().getNome());
+        boasVindas.setText(BloodForLive.getUsuarioLogado().getNome());
     }
 
     @FXML
